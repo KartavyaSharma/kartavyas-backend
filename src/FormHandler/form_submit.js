@@ -1,24 +1,32 @@
 var express = require('express');
+var nodemailer = require('nodemailer');
 var router = express.Router();
-const axios = require('axios')
-
-async function sendMail(requestBody) {
-    try {
-        return await axios.post('/send-email', {
-            formData: requestBody
-        })
-    } catch (error) {
-        return error;
-    }
-}
 
 router.post('/', (req, res) => {
-    try {
-        sendMail(req.body);
-    } catch (error) {
-        res.status(400);
-    }
-    res.status(201);
+    const { username, password } = req.body;
+    const mailData = {
+        from: `${process.env.EMAIL_ADDRESS}`,
+        to: `${process.env.EMAIL_ADDRESS}`,
+        subject: "New Contact Form Submission on Kartavyas.com",
+        html: '<h1>Hey this is my first message</h1>'
+    };
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: `${process.env.EMAIL_ADDRESS}`,
+            pass: `${process.env.EMAIL_PASS}`
+        },
+        secure: true,
+    });
+
+    transporter.sendMail(mailData, (error, info) => {
+        if(error) {
+            console.log(error);
+            res.status(400).send({ success: false });
+        }
+        res.status(200).send({ success: true });
+    })
 });
 
 module.exports = router;
