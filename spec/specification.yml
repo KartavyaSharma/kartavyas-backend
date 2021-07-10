@@ -1,0 +1,23 @@
+swagger: "2.0"
+info:
+    description: This is the swagger OpenAPI file that goes with our sever code
+    version: "1.0.0"
+    title: Kartavyas Mail Handler
+consumes:
+    - application/json
+produces:
+    - application/json
+
+basePath: /mail
+
+paths:
+    /handler:
+        get:
+            operationId: web.controllers.mail_controller.send_mail
+            tags:
+                - Response
+            summary: Add to sender identity and send mail
+            description: Recieves form body response and sends mail
+            responses:
+                200:
+                    description: Successfully sent mail
