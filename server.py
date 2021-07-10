@@ -1,7 +1,7 @@
 from flask import render_template
 import connexion
 
-app = connexion.App(__name__, specification_dir='./spec')
+app = connexion.App(__name__, specification_dir='./spec', options={'swagger_ui': False})
 
 app.add_api('specification.yml')
 
