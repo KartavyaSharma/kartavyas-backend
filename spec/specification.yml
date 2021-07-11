@@ -19,6 +19,7 @@ paths:
             summary: Add to sender identity and send mail
             description: Recieves form body response and sends mail
             requestBody:
+                required: True
                 content:
                     multipart/form-data:
                         schema:

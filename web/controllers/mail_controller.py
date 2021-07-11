@@ -5,6 +5,6 @@ for kartavyas
 
 from flask import make_response, abort
 
-def send_mail(message):
-    print(message.get('firstName', None))
+def send_mail(body):
+    print(body)
     
