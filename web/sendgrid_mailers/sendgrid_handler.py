@@ -15,10 +15,12 @@ def html_client_gen(target_name, target_email):
 
     :return: HTML template as an fstring to be used with SendGrid's API service
     """
-    content = f''
+    content = ''
     with open('web/sendgrid_mailers/templates/client.html', 'r') as f:
         for line in f.readlines():
             content+=line
+    content.replace('{target_name}', f'{target_name}')
+    content.replace('{target_email}', f'{target_email}')
     return content
 
 
