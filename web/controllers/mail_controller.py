@@ -6,5 +6,5 @@ for kartavyas
 from flask import make_response, abort
 
 def send_mail(body):
-    print(body)
+    print(type(body))
     
