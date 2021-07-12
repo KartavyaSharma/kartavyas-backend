@@ -19,8 +19,8 @@ def html_client_gen(target_name, target_email):
     with open('web/sendgrid_mailers/templates/client.html', 'r') as f:
         for line in f.readlines():
             content+=line
-    content.replace('{target_name}', f'{target_name}')
-    content.replace('{target_email}', f'{target_email}')
+    content.replace('{target_name}', target_name)
+    content.replace('{target_email}', target_email)
     return content
 
 
@@ -46,7 +46,7 @@ def home_mailer(first_name, last_name, email, message):
     message = Mail(
         from_email=os.environ.get('SENDER'),
         to_emails=os.environ.get('TARGET'),
-        subject='Sending with Twilio SendGrid is Fun',
+        subject='New form submission on Kartavyas.com',
         html_content=html_home_gen(first_name, last_name, email, message)
     )
 
