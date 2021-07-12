@@ -18,6 +18,7 @@ def html_client_gen(target_name, target_email):
     content = ''
     with open('web/sendgrid_mailers/templates/client.html', 'r') as f:
         for line in f.readlines():
+            line.replace('\n', '')
             content+=line
     content.replace('{target_name}', target_name)
     content.replace('{target_email}', target_email)
