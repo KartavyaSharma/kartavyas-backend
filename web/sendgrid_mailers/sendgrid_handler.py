@@ -20,11 +20,10 @@ def html_client_gen(target_name, target_email):
         for line in f.readlines():
             new_line = line
             if '{target_name}' in line:
-                new_line.replace('{target_name}', target_name)
+                new_line = new_line.replace('{target_name}', target_name)
             if '{target_email}' in line:
-                new_line.replace('{target_email}', target_email)
+                new_line = new_line.replace('{target_email}', target_email)
             content+=new_line
-    print(content)
     return content
 
 
@@ -42,7 +41,16 @@ def html_home_gen(fname, lname, email, message):
     content = f''
     with open('web/sendgrid_mailers/templates/home.html', 'r') as f:
         for line in f.readlines():
-            content+=line
+            new_line = line
+            if '{fname}' in line:
+                new_line = new_line.replace('{fname}', fname)
+            if '{lname}' in line:
+                new_line = new_line.replace('{lname}', lname)
+            if '{email}' in line:
+                new_line = new_line.replace('{email}', email)
+            if '{message}' in line:
+                new_line = new_line.replace('{message}', message)
+            content+=new_line
     return content
 
 
