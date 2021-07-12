@@ -16,7 +16,7 @@ def html_client_gen(target_name, target_email):
     :return: HTML template as an fstring to be used with SendGrid's API service
     """
     content = f''
-    with open(os.getcwd()+"\\templates\\client.html") as f:
+    with open('web/sendgrid_mailers/templates/client.html') as f:
         for line in f.readLines():
             content+=line
     return content
@@ -34,7 +34,7 @@ def html_home_gen(fname, lname, email, message):
     :return: HTML template as an fstring to be used with SendGrid's API service
     """
     content = f''
-    with open(os.getcwd()+"\\templates\\home.html") as f:
+    with open('web/sendgrid_mailers/templates/home.html') as f:
         for line in f.readLines():
             content+=line
     return content
