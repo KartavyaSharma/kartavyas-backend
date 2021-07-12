@@ -5,8 +5,8 @@ info:
     title: Kartavyas Mail Handler
 
 servers:
-    - url: https://kartavys-backend.herokuapp.com
-      description: Main production server for exposing API endpoints
+    - url: /mail
+      description: Main production server for exposing API endpoints for mail controllers
 
 paths:
     /handler:
