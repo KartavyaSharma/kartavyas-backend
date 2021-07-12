@@ -21,6 +21,7 @@ def html_client_gen(target_name, target_email):
             content+=line
     content.replace('{target_name}', target_name)
     content.replace('{target_email}', target_email)
+    print(content)
     return content
 
 
