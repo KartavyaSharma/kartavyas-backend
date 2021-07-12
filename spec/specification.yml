@@ -21,7 +21,7 @@ paths:
                 content:
                     application/x-www-form-urlencoded:
                         schema:
-                            $ref: '#/components/schema/FormData'
+                            $ref: '#/components/schemas/FormData'
             responses:
                 200:
                     description: Successfully sent mail
