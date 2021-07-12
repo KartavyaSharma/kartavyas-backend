@@ -17,7 +17,7 @@ def html_client_gen(target_name, target_email):
     """
     content = f''
     with open('web/sendgrid_mailers/templates/client.html', 'r') as f:
-        for line in f.readLines():
+        for line in f.readlines():
             content+=line
     return content
 
@@ -35,7 +35,7 @@ def html_home_gen(fname, lname, email, message):
     """
     content = f''
     with open('web/sendgrid_mailers/templates/home.html', 'r') as f:
-        for line in f.readLines():
+        for line in f.readlines():
             content+=line
     return content
 
