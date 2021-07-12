@@ -3,7 +3,7 @@ This is the mail_controller module, it supports all mail operations
 for kartavyas
 """
 
-from flask import make_response, abort
+from flask import *
 from web.sendgrid_mailers.sendgrid_handler import *
 from types import SimpleNamespace
 
@@ -25,11 +25,11 @@ def send_mail(body):
     res_client = client_mailer(dict_vars.firstName, dict_vars.email)
 
     if type(res_home) != bool:
-        flask.abort(404)
+        Flask.abort(404)
 
     if type(res_client) != bool:
-        flask.abort(404)
+        Flask.abort(404)
 
-    return 202
+    return redirect("https://kartavyas.com/success")
     
     
