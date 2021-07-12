@@ -76,7 +76,15 @@ def html_home_gen(fname, lname, email, message):
     :return: HTML template as an fstring to be used with SendGrid's API service
     """
     content = f'
-
+        <html>
+            <body>
+                <h1>New form submission from Kartavyas.com</h1><br><br>
+                <p>First Name: {fname}</p><br><br>
+                <p>Last Name: {lname}</p><br><br>
+                <p>Email: <a href="mailto:{email}">{email}</a></p><br><br>
+                <p>Message: {Message}</p><br><br>
+            </body>
+        </html>
     '
     return content
 
@@ -86,7 +94,7 @@ def home_mailer(first_name, last_name, email, message):
         from_email=os.environ.get('SENDER'),
         to_emails=os.environ.get('TARGET'),
         subject='Sending with Twilio SendGrid is Fun',
-        html_content=''
+        html_content=html_home_gen(first_name, last_name, email, message)
     )
 
     try:
